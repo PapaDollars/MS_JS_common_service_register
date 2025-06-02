@@ -8,8 +8,8 @@ const axios = require('axios');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8002;
-const CONFIG_SERVICE_URL = process.env.CONFIG_SERVICE_URL || 'http://localhost:8001';
+const PORT = process.env.PORT || 8761;
+const CONFIG_SERVICE_URL = process.env.CONFIG_SERVICE_URL || 'http://localhost:8888';
 
 // Configuration du logger
 const logger = winston.createLogger({
