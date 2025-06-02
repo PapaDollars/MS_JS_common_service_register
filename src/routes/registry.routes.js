@@ -1,24 +1,18 @@
 const express = require('express');
-const registryController = require('../controllers/registry.controller');
-
 const router = express.Router();
 
-// Enregistrer un service
-router.post('/apps', registryController.registerService);
+// Route de santé
+router.get('/health', (req, res) => {
+    res.status(200).json({ status: 'UP' });
+});
 
-// Désenregistrer un service
-router.delete('/apps/:name/:instanceId', registryController.deregisterService);
-
-// Heartbeat
-router.put('/apps/:name/:instanceId/heartbeat', registryController.heartbeat);
-
-// Mettre à jour le statut
-router.put('/apps/:name/:instanceId/status', registryController.updateStatus);
-
-// Obtenir tous les services
-router.get('/apps', registryController.getAllServices);
-
-// Obtenir les instances d'un service
-router.get('/apps/:name', registryController.getServiceInstances);
+// Route pour obtenir la liste des services enregistrés
+router.get('/', (req, res) => {
+    res.status(200).json({
+        service: 'registry-service',
+        version: '1.0.0',
+        status: 'UP'
+    });
+});
 
 module.exports = router;
